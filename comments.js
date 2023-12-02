@@ -1,15 +1,15 @@
-// create web server 
-// 1. import express
-const express = require('express');
-// 2. create an instance of express
-const app = express();
-// 3. create a port number
-const port = 3000;
-// 4. create a route
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+// create web server
+// 1. load http module
+var http = require('http');
+// 2. create web server object
+var server = http.createServer(function(req,res){
+    // 3. write head
+    res.writeHead(200,{'Content-Type':'text/html'});
+    // 4. write body
+    res.write('<h1>Comments</h1>');
+    // 5. end
+    res.end();
 });
-// 5. start the server
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-});
+// 3. listen on port
+server.listen(3000);
+console.log('Server running on port 3000');
